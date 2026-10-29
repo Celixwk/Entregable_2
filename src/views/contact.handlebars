@@ -1,0 +1,20 @@
+<div class="contact-card">
+    <h2><i class="fa-solid fa-address-book"></i> Plantilla de Contacto {{date}}</h2>
+    <p class="subtitle">Este es el contenido de la página de contacto.</p>
+    
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensaje enviado (simulado)');">
+        <div class="form-group">
+            <label for="data">Información o Mensaje</label>
+            <input type="text" name="data" id="data" placeholder="Escribe tu consulta..." required>
+        </div>
+        <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" name="email" id="email" placeholder="tu_correo@ejemplo.com" required>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+    </form>
+
+    <div style="margin-top: 1.5rem;">
+        <a href="/" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Volver al principal</a>
+    </div>
+</div>

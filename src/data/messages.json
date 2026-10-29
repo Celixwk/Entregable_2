@@ -1,0 +1,42 @@
+[
+  {
+    "id": "330135b4-85d2-454f-aafd-e6f22f90c750",
+    "user": "Juan Developer",
+    "message": "Hola a todos! Este chat esta implementado con SOLID y Sockets.",
+    "timestamp": "2026-10-29T16:42:22.305Z",
+    "formattedTime": "11:42:22 a. m.",
+    "formattedDate": "29/10/2026"
+  },
+  {
+    "id": "737ad0d4-7c22-4d41-a06a-679ba4bcda04",
+    "user": "Juan Developer",
+    "message": "Todo funcionando en tiempo real de manera excelente.",
+    "timestamp": "2026-10-29T16:43:04.387Z",
+    "formattedTime": "11:43:04 a. m.",
+    "formattedDate": "29/10/2026"
+  },
+  {
+    "id": "04accf10-9951-4cc9-9533-fd8ce76ef864",
+    "user": "Carlos Profe",
+    "message": "¡Hola! Este mensaje se guarda directamente sin sockets y muestra autor, hora y texto.",
+    "timestamp": "2026-10-29T16:51:10.875Z",
+    "formattedTime": "11:51:10 a. m.",
+    "formattedDate": "29/10/2026"
+  },
+  {
+    "id": "25e212cf-e344-422f-9e36-cdae1a470e2c",
+    "user": "Estudiante 1",
+    "message": "Buenas tardes, confirmando que en este cuadro grande sale mi nombre, la hora y lo que escribi sin sockets.",
+    "timestamp": "2026-10-29T16:54:07.544Z",
+    "formattedTime": "11:54:07 a. m.",
+    "formattedDate": "29/10/2026"
+  },
+  {
+    "id": "0c9a2973-ab98-40e9-b6d0-8f77850da6c2",
+    "user": "Jean Carlos Celis",
+    "message": "Dvan",
+    "timestamp": "2026-10-29T16:57:12.011Z",
+    "formattedTime": "11:57:12 a. m.",
+    "formattedDate": "29/10/2026"
+  }
+]

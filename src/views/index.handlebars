@@ -1,0 +1,35 @@
+<div class="home-container">
+    <div class="hero-banner">
+        <span class="badge-tag"><i class="fa-solid fa-code-branch"></i> Arquitectura SOLID + WebSockets</span>
+        <h1>{{username}}</h1>
+        <p class="subtitle">Demostración de motor de plantillas Handlebars integrado con Socket.io y principios SOLID en Node.js.</p>
+        <div class="hero-actions">
+            <a href="/chat" class="btn btn-primary"><i class="fa-solid fa-comments"></i> Abrir Chat en Vivo</a>
+            <a href="/contact" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </div>
+    </div>
+
+    <div class="card-section">
+        {{#if admin}}
+            <div class="admin-badge">
+                <i class="fa-solid fa-shield-halved"></i> Modo Administrador Activo
+            </div>
+            <h3>Catálogo de Productos</h3>
+            <div class="products-grid">
+                {{#each products}}
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fa-solid fa-box-open"></i></div>
+                        <div class="product-info">
+                            <h4>{{this.name_product}}</h4>
+                            <span class="product-price">${{this.price}} USD</span>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="user-badge">
+                <i class="fa-solid fa-user"></i> Modo Usuario Estándar
+            </div>
+        {{/if}}
+    </div>
+</div>

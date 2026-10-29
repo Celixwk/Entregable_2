@@ -1,0 +1,153 @@
+<div class="chat-dashboard-container">
+    <!-- Encabezado de la Sección -->
+    <div class="dashboard-header">
+        <div>
+            <h2><i class="fa-solid fa-comments"></i> Tablero de Mensajes / Chat</h2>
+            <p class="subtitle">Arquitectura limpia basada en principios SOLID con Express y Handlebars (HTTP estándar).</p>
+        </div>
+        <div class="header-badges">
+            <span class="badge-solid"><i class="fa-solid fa-cubes"></i> Arquitectura SOLID</span>
+            <button id="refreshBtn" class="btn btn-secondary btn-sm" title="Actualizar cuadro de mensajes">
+                <i class="fa-solid fa-rotate-right"></i> Actualizar
+            </button>
+        </div>
+    </div>
+
+    {{#if errorMessage}}
+        <div class="alert alert-error">
+            <i class="fa-solid fa-triangle-exclamation"></i> {{errorMessage}}
+        </div>
+    {{/if}}
+
+    <div class="chat-main-grid">
+        <!-- COLUMNA IZQUIERDA: CUADRO GRANDE DE MENSAJES -->
+        <section class="board-column">
+            <div class="big-board-box">
+                <div class="board-header">
+                    <div class="board-title">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <h3>Cuadro Principal de Mensajes</h3>
+                    </div>
+                    <span class="counter-badge" id="messageCounterBadge">{{totalMessages}} Mensajes</span>
+                </div>
+
+                <!-- EL CUADRO GRANDE DONDE APARECEN LOS MENSAJES -->
+                <div class="big-board-display" id="bigBoardDisplay">
+                    {{#if messages.length}}
+                        {{#each messages}}
+                            <article class="board-message-card" data-id="{{this.id}}">
+                                <header class="message-card-header">
+                                    <div class="author-info">
+                                        <div class="author-avatar">{{this.user}}</div>
+                                        <div>
+                                            <span class="author-label">Escrito por:</span>
+                                            <strong class="author-name">{{this.user}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="time-info">
+                                        <span class="time-label"><i class="fa-regular fa-clock"></i> Hora:</span>
+                                        <time class="time-value" datetime="{{this.timestamp}}">
+                                            {{this.formattedTime}} ({{this.formattedDate}})
+                                        </time>
+                                    </div>
+                                </header>
+                                <div class="message-card-body">
+                                    <p class="message-text">{{this.message}}</p>
+                                </div>
+                            </article>
+                        {{/each}}
+                    {{else}}
+                        <div class="board-empty-state" id="emptyBoardState">
+                            <i class="fa-regular fa-comment-dots empty-icon"></i>
+                            <h4>El cuadro está vacío</h4>
+                            <p>Aún no se ha publicado ningún mensaje. Completa el formulario para escribir el primero.</p>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+
+        <!-- COLUMNA DERECHA: FORMULARIO Y PRINCIPIOS SOLID -->
+        <aside class="side-column">
+            <!-- Formulario para escribir mensaje -->
+            <div class="card-composer">
+                <h3><i class="fa-solid fa-pen-to-square"></i> Escribir Mensaje</h3>
+                <p class="form-desc">Ingresa tu nombre y el mensaje que deseas publicar en el cuadro grande.</p>
+
+                <form id="messageForm" action="/chat" method="POST" class="composer-form">
+                    <div class="form-group">
+                        <label for="userInput"><i class="fa-solid fa-user"></i> ¿Quién escribe? (Nombre / Autor):</label>
+                        <input 
+                            type="text" 
+                            id="userInput" 
+                            name="user" 
+                            placeholder="Ej. Juan Pérez" 
+                            required 
+                            maxlength="50"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="messageInput"><i class="fa-solid fa-comment-dots"></i> Mensaje:</label>
+                        <textarea 
+                            id="messageInput" 
+                            name="message" 
+                            rows="4" 
+                            placeholder="Escribe aquí lo que deseas publicar en el cuadro..." 
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                        <i class="fa-solid fa-paper-plane"></i> Publicar en el Cuadro
+                    </button>
+                </form>
+            </div>
+
+            <!-- Panel de Principios SOLID -->
+            <div class="solid-summary-box">
+                <h4><i class="fa-solid fa-diagram-project"></i> Arquitectura SOLID</h4>
+                <div class="solid-mini-list">
+                    <div class="solid-mini-item">
+                        <span class="solid-badge">S</span>
+                        <div>
+                            <strong>Single Responsibility</strong>
+                            <p>Clases separadas para Entidad (Message), Repositorio, Servicio y Controlador.</p>
+                        </div>
+                    </div>
+                    <div class="solid-mini-item">
+                        <span class="solid-badge">O</span>
+                        <div>
+                            <strong>Open / Closed</strong>
+                            <p>Persistencia extensible a base de datos sin modificar el servicio.</p>
+                        </div>
+                    </div>
+                    <div class="solid-mini-item">
+                        <span class="solid-badge">L</span>
+                        <div>
+                            <strong>Liskov Substitution</strong>
+                            <p>FileMessageRepository e InMemoryMessageRepository son intercambiables.</p>
+                        </div>
+                    </div>
+                    <div class="solid-mini-item">
+                        <span class="solid-badge">I</span>
+                        <div>
+                            <strong>Interface Segregation</strong>
+                            <p>Contratos específicos (save, getAll) sin dependencias innecesarias.</p>
+                        </div>
+                    </div>
+                    <div class="solid-mini-item">
+                        <span class="solid-badge">D</span>
+                        <div>
+                            <strong>Dependency Inversion</strong>
+                            <p>El servicio y controlador reciben sus dependencias por constructor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<!-- Script del cliente para actualización fluida con Fetch -->
+<script src="/js/chat.js"></script>
