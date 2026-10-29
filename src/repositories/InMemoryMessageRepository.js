@@ -1,12 +1,5 @@
 import { MessageRepository } from './MessageRepository.js';
 
-/**
- * Implementación en memoria: InMemoryMessageRepository
- * 
- * Principios SOLID aplicados:
- * - LSP (Liskov Substitution Principle): Puede sustituir a MessageRepository de forma transparente.
- * - SRP (Single Responsibility Principle): Se encarga exclusivamente del almacenamiento en memoria volátil.
- */
 export class InMemoryMessageRepository extends MessageRepository {
     constructor() {
         super();

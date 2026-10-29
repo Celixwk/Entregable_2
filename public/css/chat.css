@@ -1,6 +1,3 @@
-/* ==========================================================================
-   DESIGN SYSTEM & VARIABLES (Modern Glassmorphism & High Legibility)
-   ========================================================================== */
 :root {
     --bg-dark: #0f172a;
     --bg-card: rgba(30, 41, 59, 0.75);
@@ -22,7 +19,6 @@
     --shadow-card: 0 16px 36px -8px rgba(0, 0, 0, 0.45), 0 0 20px rgba(99, 102, 241, 0.08);
 }
 
-/* Base Resets */
 * {
     margin: 0;
     padding: 0;
@@ -42,9 +38,6 @@ body {
     flex-direction: column;
 }
 
-/* ==========================================================================
-   NAVBAR
-   ========================================================================== */
 .main-navbar {
     background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(16px);
@@ -113,9 +106,6 @@ body {
     border-color: var(--primary);
 }
 
-/* ==========================================================================
-   MAIN CONTENT WRAPPER
-   ========================================================================== */
 .main-content {
     flex: 1;
     max-width: 1280px;
@@ -124,9 +114,6 @@ body {
     padding: 2rem 1.5rem;
 }
 
-/* ==========================================================================
-   CHAT / DASHBOARD SECTION
-   ========================================================================== */
 .chat-dashboard-container {
     display: flex;
     flex-direction: column;
@@ -187,9 +174,6 @@ body {
     }
 }
 
-/* ==========================================================================
-   EL CUADRO GRANDE DE MENSAJES (BIG BOARD BOX)
-   ========================================================================== */
 .big-board-box {
     background: var(--bg-card);
     backdrop-filter: blur(20px);
@@ -229,7 +213,6 @@ body {
     font-weight: 600;
 }
 
-/* El área interior grande con scroll */
 .big-board-display {
     padding: 1.75rem;
     min-height: 480px;
@@ -251,7 +234,6 @@ body {
     border-radius: 10px;
 }
 
-/* Tarjeta individual de mensaje dentro del cuadro */
 .board-message-card {
     background: rgba(30, 41, 59, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -279,7 +261,6 @@ body {
     }
 }
 
-/* Encabezado del mensaje: Quién escribió y la Hora */
 .message-card-header {
     display: flex;
     justify-content: space-between;
@@ -326,7 +307,6 @@ body {
     font-weight: 600;
 }
 
-/* La Hora */
 .time-info {
     display: flex;
     align-items: center;
@@ -348,7 +328,6 @@ body {
     color: #38bdf8;
 }
 
-/* Lo que se escribe */
 .message-card-body {
     padding-top: 0.2rem;
 }
@@ -361,7 +340,6 @@ body {
     word-break: break-word;
 }
 
-/* Estado vacío del cuadro */
 .board-empty-state {
     display: flex;
     flex-direction: column;
@@ -385,9 +363,6 @@ body {
     margin-bottom: 0.4rem;
 }
 
-/* ==========================================================================
-   FORMULARIO COMPOSER (Escribir Mensaje)
-   ========================================================================== */
 .card-composer {
     background: var(--bg-card);
     backdrop-filter: blur(20px);
@@ -460,9 +435,6 @@ body {
     padding: 0.85rem;
 }
 
-/* ==========================================================================
-   PANEL SOLID SUMMARY
-   ========================================================================== */
 .solid-summary-box {
     background: var(--bg-card);
     backdrop-filter: blur(20px);
@@ -521,9 +493,6 @@ body {
     line-height: 1.35;
 }
 
-/* ==========================================================================
-   BUTTONS & GENERAL COMPONENTS
-   ========================================================================== */
 .btn {
     padding: 0.65rem 1.25rem;
     border-radius: var(--radius-sm);
@@ -576,9 +545,6 @@ body {
     gap: 0.6rem;
 }
 
-/* ==========================================================================
-   HOME VIEW STYLES
-   ========================================================================== */
 .home-container {
     max-width: 900px;
     margin: 0 auto;
@@ -697,7 +663,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Contact Card */
 .contact-card {
     max-width: 600px;
     margin: 2rem auto;

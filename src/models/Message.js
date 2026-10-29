@@ -1,20 +1,6 @@
 import crypto from 'crypto';
 
-/**
- * Entidad de dominio: Message
- * 
- * Principio SOLID aplicado:
- * - SRP (Single Responsibility Principle): Esta clase tiene una única responsabilidad:
- *   representar la estructura, validar los datos y formatear la fecha/hora de un mensaje.
- */
 export class Message {
-    /**
-     * @param {Object} params
-     * @param {string} [params.id]
-     * @param {string} params.user - Nombre de quien escribió
-     * @param {string} params.message - Contenido del mensaje
-     * @param {string} [params.timestamp] - Fecha y hora ISO del mensaje
-     */
     constructor({ id, user, message, timestamp } = {}) {
         this.id = id || crypto.randomUUID();
         this.user = this._validateUser(user);
@@ -36,17 +22,11 @@ export class Message {
         return message.trim();
     }
 
-    /**
-     * Devuelve la hora formateada (ej. 11:45 AM)
-     */
     get formattedTime() {
         const date = new Date(this.timestamp);
         return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
-    /**
-     * Devuelve la fecha completa (ej. 29/10/2026)
-     */
     get formattedDate() {
         const date = new Date(this.timestamp);
         return date.toLocaleDateString();

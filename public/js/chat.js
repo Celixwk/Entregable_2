@@ -1,7 +1,3 @@
-/**
- * Gestión del Cuadro de Mensajes (HTTP Fetch & DOM Manipulation)
- * Sin dependencias de WebSockets ni librerías externas complejas.
- */
 document.addEventListener('DOMContentLoaded', () => {
     const messageForm = document.getElementById('messageForm');
     const userInput = document.getElementById('userInput');
@@ -10,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageCounterBadge = document.getElementById('messageCounterBadge');
     const refreshBtn = document.getElementById('refreshBtn');
 
-    // Paleta de colores determinista para avatares según el nombre
     const avatarColors = [
         '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e',
         '#10b981', '#14b8a6', '#06b6d4', '#f59e0b'
@@ -35,20 +30,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return name.slice(0, 2).toUpperCase();
     }
 
-    // Inicializar avatares de los mensajes ya renderizados por Handlebars
     document.querySelectorAll('.author-avatar').forEach((el) => {
         const rawName = el.textContent || '';
         el.textContent = getInitials(rawName);
         el.style.backgroundColor = getAvatarColor(rawName);
     });
 
-    // Cargar último nombre recordado
     const savedUser = localStorage.getItem('board_author_name');
     if (savedUser && userInput) {
         userInput.value = savedUser;
     }
 
-    // Función para renderizar una tarjeta de mensaje en el cuadro grande
     function createMessageCardHTML(item) {
         const initials = getInitials(item.user);
         const color = getAvatarColor(item.user);
@@ -85,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return div.innerHTML;
     }
 
-    // 1. Envío asíncrono con Fetch al endpoint HTTP POST /api/messages
     if (messageForm) {
         messageForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -95,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!user || !message) return;
 
-            // Recordar el autor para que no tenga que volver a escribirlo
             localStorage.setItem('board_author_name', user);
 
             try {
@@ -114,29 +104,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error(data.message || 'Error al guardar el mensaje.');
                 }
 
-                // Ocultar estado vacío si existía
                 const emptyState = document.getElementById('emptyBoardState');
                 if (emptyState) {
                     emptyState.remove();
                 }
 
-                // Añadir el nuevo mensaje al cuadro grande
                 bigBoardDisplay.insertAdjacentHTML('beforeend', createMessageCardHTML(data.payload));
                 
-                // Actualizar contador
                 const currentCount = bigBoardDisplay.querySelectorAll('.board-message-card').length;
                 if (messageCounterBadge) {
                     messageCounterBadge.textContent = `${currentCount} Mensajes`;
                 }
 
-                // Limpiar solo el textarea del mensaje
                 messageInput.value = '';
                 messageInput.focus();
 
-                // Auto-scroll al final del cuadro grande
                 bigBoardDisplay.scrollTop = bigBoardDisplay.scrollHeight;
 
-                // Notificación sutil
                 if (window.Swal) {
                     const toast = Swal.mixin({
                         toast: true,
@@ -169,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Función para recargar los mensajes desde el servidor (HTTP GET /api/messages)
     async function reloadMessages(showFeedback = true) {
         try {
             const res = await fetch('/api/messages', {

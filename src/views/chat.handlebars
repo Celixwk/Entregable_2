@@ -1,5 +1,4 @@
 <div class="chat-dashboard-container">
-    <!-- Encabezado de la Sección -->
     <div class="dashboard-header">
         <div>
             <h2><i class="fa-solid fa-comments"></i> Tablero de Mensajes / Chat</h2>
@@ -20,7 +19,6 @@
     {{/if}}
 
     <div class="chat-main-grid">
-        <!-- COLUMNA IZQUIERDA: CUADRO GRANDE DE MENSAJES -->
         <section class="board-column">
             <div class="big-board-box">
                 <div class="board-header">
@@ -31,7 +29,6 @@
                     <span class="counter-badge" id="messageCounterBadge">{{totalMessages}} Mensajes</span>
                 </div>
 
-                <!-- EL CUADRO GRANDE DONDE APARECEN LOS MENSAJES -->
                 <div class="big-board-display" id="bigBoardDisplay">
                     {{#if messages.length}}
                         {{#each messages}}
@@ -67,9 +64,7 @@
             </div>
         </section>
 
-        <!-- COLUMNA DERECHA: FORMULARIO Y PRINCIPIOS SOLID -->
         <aside class="side-column">
-            <!-- Formulario para escribir mensaje -->
             <div class="card-composer">
                 <h3><i class="fa-solid fa-pen-to-square"></i> Escribir Mensaje</h3>
                 <p class="form-desc">Ingresa tu nombre y el mensaje que deseas publicar en el cuadro grande.</p>
@@ -104,7 +99,6 @@
                 </form>
             </div>
 
-            <!-- Panel de Principios SOLID -->
             <div class="solid-summary-box">
                 <h4><i class="fa-solid fa-diagram-project"></i> Arquitectura SOLID</h4>
                 <div class="solid-mini-list">
@@ -149,5 +143,4 @@
     </div>
 </div>
 
-<!-- Script del cliente para actualización fluida con Fetch -->
 <script src="/js/chat.js"></script>

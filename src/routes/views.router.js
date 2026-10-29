@@ -1,19 +1,8 @@
 import { Router } from 'express';
 
-/**
- * Enrutador de Vistas: createViewsRouter
- * 
- * Principios SOLID aplicados:
- * - SRP (Single Responsibility Principle): Mapea las peticiones GET hacia las vistas Handlebars.
- * - DIP (Dependency Inversion Principle): Recibe 'chatService' inyectado para consultar
- *   los mensajes que se presentarán en la vista del chat (Server-Side Rendering).
- * 
- * @param {import('../services/ChatService.js').ChatService} chatService
- */
 export function createViewsRouter(chatService) {
     const router = Router();
 
-    // Vista principal (mantiene los productos del taller)
     router.get('/', (req, res) => {
         const products = [
             { name_product: 'Hamburguesa chibita', price: 10 },
@@ -28,7 +17,6 @@ export function createViewsRouter(chatService) {
         });
     });
 
-    // Vista del Chat / Tablero de Mensajes
     router.get('/chat', async (req, res) => {
         try {
             const rawMessages = await chatService.getHistory();
@@ -50,7 +38,6 @@ export function createViewsRouter(chatService) {
         }
     });
 
-    // Vista de contacto
     router.get('/contact', (req, res) => {
         res.render('contact', {
             title: 'Contacto',

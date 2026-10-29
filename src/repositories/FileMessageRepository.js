@@ -3,19 +3,7 @@ import path from 'path';
 import { MessageRepository } from './MessageRepository.js';
 import { Message } from '../models/Message.js';
 
-/**
- * Implementación basada en archivos: FileMessageRepository
- * 
- * Principios SOLID aplicados:
- * - OCP (Open/Closed Principle): Extendemos el sistema para persistir en disco sin modificar
- *   ChatService ni la interfaz MessageRepository.
- * - LSP (Liskov Substitution Principle): Puede intercambiarse por InMemoryMessageRepository sin romper nada.
- * - SRP (Single Responsibility Principle): Se encarga exclusivamente de la persistencia de mensajes en el sistema de archivos.
- */
 export class FileMessageRepository extends MessageRepository {
-    /**
-     * @param {string} filePath - Ruta absoluta o relativa al archivo JSON
-     */
     constructor(filePath) {
         super();
         this.filePath = filePath;
